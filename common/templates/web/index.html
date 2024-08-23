@@ -1,0 +1,88 @@
+{% extends 'web/_main.html' %}
+{% load static %}
+
+{% block contenido %}
+
+<main>
+    <div class="-mt-24 relative">
+
+        <div class="w-full min-h-[700px] overflow-hidden max-h-[800px]">
+            <video playsinline autoplay muted loop class="scale-125 blur-sm brightness-50 w-full min-h-[700px] object-cover">
+                <source src="{% static 'media/home_page_overlay_video.mp4' %}" type="video/mp4">
+            </video>
+        </div> 
+
+
+        <div class="absolute top-0 left-0 w-full h-full grid place-items-center">
+            <img class="px-12 animation-glow" src="{% static 'media/logo.png' %}" alt="logo">
+        </div> <!-- overlay -->
+    </div>
+    
+    <span class="inline-block mt-auto w-full h-[2px] bg-amber-400 -translate-y-4 sticky top-28"></span>
+
+    <section class="w-11/12 max-w-[1200px] mx-auto py-10 text-gray-100">
+        <p class="text-center">El Valle del Miro nos unió como <b>compañeros</b>, la vida como <b>familia</b>.<br><i>Estos premios son para celebrarlo.</i></p>
+        <h1 class="uppercase text-center text-4xl font-black mt-4">Bienvenidos a los <span class="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 inline-block text-transparent bg-clip-text italic">Mango d'Or Awards</span></h1>
+    </section>
+
+    <section class="w-11/12 max-w-[1200px] mx-auto py-10 text-gray-100">
+        <h4 class="text-3xl max-md:text-center font-black uppercase">¿Cómo funcionan los <span class="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 inline-block text-transparent bg-clip-text italic">Mango d'Or Awards</span>?</h4>
+        <div class="grid grid-cols-3 max-lg:grid-cols-2 max-sm:grid-cols-1 gap-3 mt-6">
+            <div class="rounded-lg bg-gray-900/20 p-6 flex flex-col gap-4 items-center">
+                <p class="text-center text-lg font-extrabold uppercase">Categorías</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-category-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M10 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" stroke-width="0" fill="currentColor" />
+                    <path d="M20 3h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" stroke-width="0" fill="currentColor" />
+                    <path d="M10 13h-6a1 1 0 0 0 -1 1v6a1 1 0 0 0 1 1h6a1 1 0 0 0 1 -1v-6a1 1 0 0 0 -1 -1z" stroke-width="0" fill="currentColor" />
+                    <path d="M17 13a4 4 0 1 1 -3.995 4.2l-.005 -.2l.005 -.2a4 4 0 0 1 3.995 -3.8z" stroke-width="0" fill="currentColor" />
+                </svg>
+                <p class="text-center">Hay un total de 26 categorías. En cada categoría habrá un candidato ganador. Todos los candidatos tienen la oportunidad de ganar en cualquier categoría.</p>
+            </div>
+            <div class="rounded-lg bg-gray-900/20 p-6 flex flex-col gap-4 items-center">
+                <p class="text-center text-lg font-extrabold uppercase">Candidatos</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" stroke-width="0" fill="currentColor" />
+                    <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" stroke-width="0" fill="currentColor" />
+                </svg>
+                <p class="text-center">Contamos con 14 <a class="transition-colors !text-amber-300 hover:!text-amber-500" href="{% url 'candidates:candidates-list' %}">candidatos</a>, los cuales son los integrantes del grupo terrorista <i>DJ MANGUERS</i>. Puedes votar a tus favoritos para cada categoría.</p>
+            </div>
+            <div class="rounded-lg bg-gray-900/20 p-6 flex flex-col gap-4 items-center max-lg:col-span-2 max-sm:col-span-1">
+                <p class="text-center text-lg font-extrabold uppercase">Votación</p>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-mail-filled" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#597e8d" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M22 7.535v9.465a3 3 0 0 1 -2.824 2.995l-.176 .005h-14a3 3 0 0 1 -2.995 -2.824l-.005 -.176v-9.465l9.445 6.297l.116 .066a1 1 0 0 0 .878 0l.116 -.066l9.445 -6.297z" stroke-width="0" fill="currentColor" />
+                    <path d="M19 4c1.08 0 2.027 .57 2.555 1.427l-9.555 6.37l-9.555 -6.37a2.999 2.999 0 0 1 2.354 -1.42l.201 -.007h14z" stroke-width="0" fill="currentColor" />
+                </svg>
+                <p class="text-center">La votación la realizan los usuarios. Cada usuario dispone de 3 votos, cada uno con una valoración distinta (4, 2 o 1 punto.). Puedes repartir estas votaciones como desees, pero no puedes votar al mismo candidato 2 veces.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="w-11/12 max-w-[1200px] mx-auto py-10 text-gray-100 text-right">
+        <h4 class="text-3xl max-md:text-center font-black uppercase">¿Cómo puedo <span class="bg-gradient-to-r from-yellow-400 via-amber-400 to-orange-400 inline-block text-transparent bg-clip-text italic">votar</span>?</h4>
+        <p class="mt-4 max-md:text-center">
+            Para votar necesitarás una <a class="transition-colors !text-amber-300 hover:!text-amber-500" href="{% url 'users:login' %}">cuenta</a>, la cual te la suminstrará alguno de nuestros administradores. Si no dispones de una cuenta no puedes votar, eres un/a <i>beta</i>. Aquí no se admiten <i>betas</i>.
+        </p>
+        {% if user.is_authenticated %}
+        <div class="max-sm:grid max-sm:place-items-center">
+            <div class="mt-5 w-56 max-sm:w-11/12 cursor-pointer inline-block px-12 py-6 text-center bg-amber-500 -skew-x-[20deg] hover:bg-gray-900 text-gray-900 hover:text-gray-100 transition-colors">
+                <span class="inline-block skew-x-[20deg] font-black uppercase">Vota</span>
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+    <section class="w-11/12 max-w-[1200px] mx-auto py-10 text-gray-100 text-right">
+        
+    </section>
+
+</main>
+    
+{% endblock %}
+
+{% block scripts %}
+    {% comment %} {% load static %}
+    <script type="text/javascript" src="{% static 'scripts/index/index.js' %}"></script> {% endcomment %}
+{% endblock %}

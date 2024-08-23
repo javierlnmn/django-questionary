@@ -1,0 +1,22 @@
+<div id="responsive-menu" class="md:hidden transition-all duration-500 fixed z-[100] top-0 left-0 w-full h-full bg-gradient-to-br from-gray-700 to-gray-800 bg-no-repeat grid place-items-center opacity-0 invisible">
+    <div id="close-responsive-menu-button" class="fixed top-6 right-6 cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M18 6l-12 12" />
+            <path d="M6 6l12 12" />
+        </svg>
+    </div>
+    <div class="w-11/12 bg-gray-700/20 shadow-lg py-28 p-12 flex flex-col gap-28 justify-center items-center">
+        <a class="text-4xl uppercase font-thin transition-colors hover:text-amber-400" href="">Categorías</a>
+        <a class="text-4xl uppercase font-thin transition-colors hover:text-amber-400" href="{% url 'candidates:candidates-list' %}">Candidatos</a>
+        {% if user.is_authenticated %}
+            <a class="text-4xl uppercase font-thin transition-colors hover:text-amber-400" href="">Votación</a>
+            <form method="post" action="{% url 'users:logout' %}">
+                {% csrf_token %}
+                <button class="text-4xl uppercase font-thin transition-colors hover:text-red-400" type="submit">Cerrar Sesión</button>
+            </form>
+        {% else %}
+            <a class="text-4xl uppercase font-thin transition-colors hover:text-amber-400" href="{% url 'users:login' %}">Iniciar Sesión</a>
+        {% endif %}
+    </div> 
+</div>

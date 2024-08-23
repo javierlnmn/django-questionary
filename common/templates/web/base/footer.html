@@ -1,0 +1,37 @@
+{% load static %}
+
+<footer class="relative z-20 py-8 bg-gray-800 bg-opacity-75 shadow-md mt-auto">
+
+    <div class="w-11/12 max-w-[1200px] mx-auto grid grid-cols-4 max-md:flex max-md:flex-col max-md:items-center text-gray-100">
+
+        <div class="text-sm flex flex-col justify-between gap-6 max-md:gap-8 max-md:self-start">
+            <a class="transition-colors hover:text-amber-400" href="">Categorías</a>
+            <a class="transition-colors hover:text-amber-400" href="{% url 'candidates:candidates-list' %}">Candidatos</a>
+            {% if user.is_authenticated %}
+                <a class="transition-colors hover:text-amber-400" href="">Votación</a>
+                <form method="post" action="{% url 'users:logout' %}">
+                    {% csrf_token %}
+                    <button class="transition-colors hover:text-red-400" type="submit">Cerrar Sesión</button>
+                </form>
+            {% else %}
+                <a class="transition-colors hover:text-amber-400" href="{% url 'users:login' %}">Iniciar Sesión</a>
+            {% endif %}
+        </div>
+
+        <div class="col-span-3 grid grid-rows-2 gap-8 max-md:flex max-md:flex-col max-md:gap-6 max-md:mt-12">
+            
+            <div class="flex justify-center">
+                <a href="{% url "common:index" %}">
+                    <img class="h-20" src="{% static 'media/logo.png' %}" alt="logo.png">
+                </a>
+            </div>
+            
+            <p class="text-center text-xs self-end max-md:self-auto">
+                Mango d'Or Awards &copy;. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+    
+</footer>

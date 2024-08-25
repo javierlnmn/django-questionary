@@ -21,4 +21,7 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path("__reload__/", include("django_browser_reload.urls")),
+    
+    path('', include('common.urls')),
+    path('users/', include('users.urls')),
 ]

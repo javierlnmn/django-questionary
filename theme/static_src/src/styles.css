@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.font-b612 {
+    font-family: "B612", sans-serif;
+}
+
 .font-lobster-regular {
     font-family: "Lobster", sans-serif;
     font-weight: 400;

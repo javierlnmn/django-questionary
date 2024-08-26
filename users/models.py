@@ -14,4 +14,4 @@ class CustomUser(AbstractUser):
             return static(f'images/default_pfp_{default_pfp_number}.png')
 
     def __str__(self):
-        return f'{self.username} Profile'
+        return f'{self.username} ({self.first_name} {self.last_name})'

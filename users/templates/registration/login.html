@@ -1,5 +1,5 @@
 {% extends 'web/_empty.html' %}
-{% load static custom_tags %}
+{% load static customtags %}
 
 {% block contenido %}
 
@@ -9,7 +9,7 @@
     {% for user in users %}
     <a href="{% url 'users:login_user' user.id %}">
         <div class="flex flex-col gap-3 items-center justify-center max-w-48 hover:scale-105 transition-all cursor-pointer">
-            <img class="rounded-full shadow-md" src="{{ user.profile_picture_url }}" alt="">
+            <img class="rounded-full aspect-1 object-cover shadow-md" src="{{ user.profile_picture_url }}" alt="">
             <p class="text-2xl">{{ user.username }}</p>
         </div>
     </a>

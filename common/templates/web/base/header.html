@@ -1,5 +1,17 @@
 {% load static %}
 
-<header class="z-20 transition-colors duration-300 flex justify-center items-center h-24 sticky top-0" id="header">
-   
+<header class="flex justify-center items-center h-24">
+
+    <div class="mx-auto max-w-7xl w-11/12 flex justify-between gap-6">
+        <h1 class="text-5xl max-md:text-4xl max-sm:text-3xl font-lobster-regular text-blue-600">Quizzle</h1>
+
+        <nav class="flex justify-center items-center gap-4">
+            <a class="text-blue-800 hover:text-blue-500 transition-colors cursor-pointer" href="{% url 'users:logout' %}">Logout</a>
+            <div class="flex gap-2 items-center justify-center">
+                <p>{{request.user.first_name}} {{request.user.last_name}}</p>
+                <img class="max-w-9 aspect-1 object-cover rounded-full" src="{{request.user.profile_picture_url}}" alt="User's profile picture">
+            </div>
+        </nav>
+    </div>
+
 </header>

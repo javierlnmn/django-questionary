@@ -44,7 +44,7 @@ class QuizEntryAdmin(admin.ModelAdmin):
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('response', 'item')
-    search_fields = ('response__respondent__username', 'item__question_text')
-    list_filter = ('response__quiz', 'item')
+    list_display = ('quiz_entry', 'item')
+    search_fields = ('quiz_entry__respondent__username', 'item__question_text')
+    list_filter = ('quiz_entry__quiz', 'item')
 

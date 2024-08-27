@@ -155,7 +155,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = "common:index"
+LOGIN_REDIRECT_URL = "items:quiz_list"
 LOGIN_URL = "users:login"
-LOGOUT_REDIRECT_URL = "common:index"
+LOGOUT_REDIRECT_URL = "items:quiz_list"
 LOGOUT_URL = "users:logout"

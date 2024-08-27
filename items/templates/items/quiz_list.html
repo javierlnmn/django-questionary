@@ -1,0 +1,36 @@
+{% extends 'web/_main.html' %}
+{% load static itemtags %}
+
+{% block contenido %}
+
+<main>
+    
+    <div class="max-w-7xl w-11/12 mx-auto">
+        <h2 class="text-3xl text-blue-950 font-bold">Select a Quiz:</h2>
+
+        <div class="my-6 grid gap-6 grid-cols-5 max-lg:grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2">
+            {% for quiz in quizzes %}
+            <div class="relative p-3 flex gap-3 flex-col shadow-md rounded-md">
+                <img src="" alt="">
+                {% is_quiz_completed_by_user quiz request.user as is_completed %}
+                {% if is_completed %}
+                    <span class="absolute -top-2 -right-4 rotate-6 bg-green-600 border-green-800 border-2 text-white py-1 px-3 rounded-md">Completed!</span>
+                {% endif %}
+                <h4 class="text-xl font-bold">{{quiz.name}}</h4>
+                <p class="-mt-4">{{ quiz.number_of_questions }} item{{ quiz.number_of_questions|pluralize }} </p>
+                <p class="font-light text-black/50">{{quiz.description}}</p>
+                <a class="text-white px-3 py-2 bg-blue-600 transition-colors hover:bg-blue-500 rounded-md text-center w-full" href="{% url 'items:quiz_view' quiz.id %}">
+                {% if is_completed %}
+                    Check results
+                {% else %}
+                    Go for it!
+                {% endif %}
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</main>
+    
+{% endblock %}

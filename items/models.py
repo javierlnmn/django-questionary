@@ -6,6 +6,10 @@ class Quiz(models.Model):
     code = models.CharField(max_length=3, unique=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='quiz_images/', blank=True, null=True)
+    
+    @property
+    def number_of_questions(self):
+        return self.items.count()
 
     def __str__(self):
         return self.name
@@ -42,17 +46,23 @@ class QuizEntry(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE, related_name='quiz_entries')
     respondent = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='quiz_entries')
     submitted_at = models.DateTimeField(auto_now_add=True)
+    
+    @property
+    def is_completed(self):
+        total_questions = self.quiz.items.count()
+        answered_questions = self.answers.filter(response=self).count()
+        return total_questions == answered_questions
 
     def __str__(self):
-        return f"Response to {self.quiz.name} by {self.respondent_id}"
+        return f"Quiz entry to {self.quiz.name} by {self.respondent}"
     
     class Meta:
         verbose_name_plural = 'Quizz Entries'
 
 class Answer(models.Model):
-    response = models.ForeignKey(QuizEntry, on_delete=models.CASCADE, related_name='answers')
+    quiz_entry = models.ForeignKey(QuizEntry, on_delete=models.CASCADE, related_name='answers')
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     choice_answer = models.ManyToManyField(Choice, blank=True)
 
     def __str__(self):
-        return f"Answer to {self.item.question_text} by {self.response.respondent_id}"
+        return f"Answer to {self.item.question_text} by {self.quiz_entry.respondent}"

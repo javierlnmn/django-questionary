@@ -34,6 +34,9 @@ class Item(models.Model):
     def __str__(self):
         return self.question_text
     
+    class Meta:
+        ordering = ('order',)
+    
 class Choice(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE, related_name='choices')
     choice_text = models.CharField(max_length=255)
@@ -50,7 +53,7 @@ class QuizEntry(models.Model):
     @property
     def is_completed(self):
         total_questions = self.quiz.items.count()
-        answered_questions = self.answers.filter(response=self).count()
+        answered_questions = self.answers.filter(quiz_entry=self).count()
         return total_questions == answered_questions
 
     def __str__(self):
@@ -66,3 +69,6 @@ class Answer(models.Model):
 
     def __str__(self):
         return f"Answer to {self.item.question_text} by {self.quiz_entry.respondent}"
+    
+    class Meta:
+        ordering = ('item__order',)

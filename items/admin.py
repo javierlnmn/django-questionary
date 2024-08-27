@@ -44,7 +44,10 @@ class QuizEntryAdmin(admin.ModelAdmin):
 
 @admin.register(Answer)
 class AnswerAdmin(admin.ModelAdmin):
-    list_display = ('quiz_entry', 'item')
+    list_display = ('quiz_entry',  'respondent_username', 'item')
     search_fields = ('quiz_entry__respondent__username', 'item__question_text')
-    list_filter = ('quiz_entry__quiz', 'item')
+    list_filter = ('quiz_entry__quiz', 'item', 'quiz_entry__respondent')
 
+    def respondent_username(self, obj):
+        return obj.quiz_entry.respondent.username
+    respondent_username.short_description = 'User'

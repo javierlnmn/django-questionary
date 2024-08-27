@@ -22,10 +22,13 @@ class QuizView(LoginRequiredMixin, View):
         if not next_item:
             return redirect('items:quiz_completion', quiz_id=quiz.id)
         
+        current_question_number = answered_items.count() + 1
+        
         context = {
             'quiz': quiz,
             'current_item': next_item,
             'choices': next_item.choices.all(),
+            'current_question_number': current_question_number,
         }
         return render(request, 'items/quiz_question.html', context)
     
@@ -62,7 +65,16 @@ class QuizCompletionView(LoginRequiredMixin, TemplateView):
         
         quiz_entry = get_object_or_404(QuizEntry, quiz=quiz, respondent=self.request.user)
         
-        
         context['quiz'] = quiz
         context['quiz_entry'] = quiz_entry
         return context
+    
+    def get(self, request, *args, **kwargs):
+        quiz_id = self.kwargs.get('quiz_id')
+        quiz = get_object_or_404(Quiz, id=quiz_id)
+        quiz_entry = get_object_or_404(QuizEntry, quiz=quiz, respondent=request.user)
+
+        if not quiz_entry.is_completed:
+            return redirect('items:quiz_view', quiz_id=quiz.id)
+
+        return super().get(request, *args, **kwargs)

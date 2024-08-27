@@ -8,6 +8,7 @@
     <div class="max-w-7xl w-11/12 mx-auto">
 
         <h1>{{ quiz.name }}</h1>
+        <p>Question {{current_question_number}} of {{quiz.number_of_questions}}</p>
         <form method="post">
             {% csrf_token %}
             <input type="hidden" name="item_id" value="{{ current_item.id }}">

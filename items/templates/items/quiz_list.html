@@ -13,6 +13,8 @@
             <div class="relative p-3 flex gap-3 flex-col shadow-md rounded-md">
                 <img src="" alt="">
                 {% is_quiz_completed_by_user quiz request.user as is_completed %}
+                {% remaining_items_by_user quiz request.user as remaining_items %}
+                {{ is_in_course }}
                 {% if is_completed %}
                     {% is_quiz_passed_by_user quiz request.user as is_passed %}
                     <span class="absolute -top-3 -right-4 {% if is_passed %} bg-green-600 border-green-800 rotate-6  {% else %} bg-red-600 border-red-800 -rotate-6 {% endif %} border-2 text-white py-1 px-3 rounded-md">
@@ -22,9 +24,13 @@
                             Not passed
                         {% endif %}
                     </span>
+                {% elif remaining_items > 0  %}
+                    <span class="absolute -top-3 -right-4 rotate-3 bg-yellow-600 border-yellow-800 border-2 text-white py-1 px-3 rounded-md">
+                        In Course
+                    </span>
                 {% endif %}
                 <h4 class="text-xl font-bold">{{quiz.name}}</h4>
-                <p class="-mt-4">{{ quiz.number_of_questions }} item{{ quiz.number_of_questions|pluralize }} </p>
+                <p class="-mt-4">{{ quiz.number_of_questions }} item{{ quiz.number_of_questions|pluralize }} <span class="text-black/50">{% if remaining_items > 0 %}({{remaining_items}} item{{remaining_items|pluralize}} remaining){% endif %}</span></p>
                 <p class="font-light text-black/50">{{quiz.description}}</p>
                 <a class="mt-auto text-white px-3 py-2 bg-blue-600 transition-colors hover:bg-blue-500 rounded-md text-center w-full" href="{% url 'items:quiz_view' quiz.slug %}">
                 {% if is_completed %}

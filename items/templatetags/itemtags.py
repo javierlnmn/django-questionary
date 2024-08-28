@@ -11,3 +11,8 @@ def is_quiz_completed_by_user(quiz, user):
     total_questions = quiz.items.count()
     answered_questions = Answer.objects.filter(quiz_entry=quiz_entry).count()
     return total_questions == answered_questions
+
+@register.simple_tag
+def is_quiz_passed_by_user(quiz, user):
+    quiz_entry = QuizEntry.objects.filter(quiz=quiz, respondent=user).first()
+    return quiz_entry.is_passed

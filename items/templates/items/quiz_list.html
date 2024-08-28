@@ -14,7 +14,14 @@
                 <img src="" alt="">
                 {% is_quiz_completed_by_user quiz request.user as is_completed %}
                 {% if is_completed %}
-                    <span class="absolute -top-2 -right-4 rotate-6 bg-green-600 border-green-800 border-2 text-white py-1 px-3 rounded-md">Completed!</span>
+                    {% is_quiz_passed_by_user quiz request.user as is_passed %}
+                    <span class="absolute -top-3 -right-4 {% if is_passed %} bg-green-600 border-green-800 rotate-6  {% else %} bg-red-600 border-red-800 -rotate-6 {% endif %} border-2 text-white py-1 px-3 rounded-md">
+                        {% if is_passed %} 
+                            Passed!
+                        {% else %}
+                            Not passed
+                        {% endif %}
+                    </span>
                 {% endif %}
                 <h4 class="text-xl font-bold">{{quiz.name}}</h4>
                 <p class="-mt-4">{{ quiz.number_of_questions }} item{{ quiz.number_of_questions|pluralize }} </p>

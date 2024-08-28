@@ -65,11 +65,8 @@ class QuizCompletionView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
         
         quiz_id = self.kwargs.get('quiz_id')
-        quiz = get_object_or_404(Quiz, id=quiz_id)
+        quiz_entry = get_object_or_404(QuizEntry, quiz__id=quiz_id, respondent=self.request.user)
         
-        quiz_entry = get_object_or_404(QuizEntry, quiz=quiz, respondent=self.request.user)
-        
-        context['quiz'] = quiz
         context['quiz_entry'] = quiz_entry
         return context
     

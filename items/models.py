@@ -1,11 +1,13 @@
 from django.db import models
 from users.models import CustomUser
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 class Quiz(models.Model):
     name = models.CharField(max_length=255)
     code = models.CharField(max_length=3, unique=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='quiz_images/', blank=True, null=True)
+    passing_score = models.PositiveIntegerField(help_text='Passing Score (%)', validators=[MaxValueValidator(100)])
     
     @property
     def number_of_questions(self):
@@ -55,7 +57,28 @@ class QuizEntry(models.Model):
         total_questions = self.quiz.items.count()
         answered_questions = self.answers.filter(quiz_entry=self).count()
         return total_questions == answered_questions
+    
+    @property
+    def is_passed(self):
+        total_score = 0
+        
+        quiz_items = self.quiz.items.all()
+        passing_score = self.quiz.passing_score
+        
+        quiz_total_correct_choices = Choice.objects.filter(is_correct=True, item__in=quiz_items).count()
+        
+        user_answers = Answer.objects.filter(quiz_entry=self, item__in=quiz_items)
+        
+        for answer in user_answers:
+            total_correct_answers = answer.choice_answer.filter(is_correct=True).count()
+            total_answers = answer.choice_answer.count()
 
+            total_score += (total_correct_answers - (total_answers - total_correct_answers))
+            
+        percentage_score = total_score * 100 / quiz_total_correct_choices
+        
+        return percentage_score > passing_score
+    
     def __str__(self):
         return f"Quiz entry to {self.quiz.name} by {self.respondent}"
     

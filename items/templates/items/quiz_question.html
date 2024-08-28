@@ -20,7 +20,7 @@
                 {% for choice in choices %}
 
                 <div id="choice-option-{{choice.id}}" class="border-2 border-transparent cursor-pointer transition-colors bg-blue-400/20 hover:bg-blue-400/70 px-3 py-5 rounded-2xl flex justify-between items-center">
-                    <p class="text-2xl text-black/80">{{choice.choice_text}}</p>
+                    <p class="text-xl text-black/80">{{choice.choice_text}}</p>
                     {% comment %} CHANGE SAME SVG ID {% endcomment %}
                     <svg id="checkbox" xmlns="http://www.w3.org/2000/svg" class="transition-all opacity-0" width="29" height="29" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -32,7 +32,7 @@
                 {% endfor %}
             </div>
             <div class="w-full flex justify-end">
-                <button id="submit-button" disabled class="px-4 py-2 bg-blue-600 hover:bg-blue-500 cursor-pointer text-white text-xl rounded-md mt-6 transition-all disabled:opacity-55 disabled:hover:bg-blue-600 disabled:cursor-default" type="submit">Next</button>
+                <button id="submit-button" disabled class="px-6 py-2 bg-blue-600 hover:bg-blue-500 cursor-pointer text-white text-lg rounded-md mt-6 transition-all disabled:opacity-55 disabled:hover:bg-blue-600 disabled:cursor-default" type="submit">Next</button>
             </div>
         </form>
     

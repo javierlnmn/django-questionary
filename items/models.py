@@ -74,7 +74,7 @@ class QuizEntry(models.Model):
             total_correct_answers = answer.choice_answer.filter(is_correct=True).count()
             total_answers = answer.choice_answer.count()
 
-            total_score += (total_correct_answers - (total_answers - total_correct_answers))
+            total_score += (total_correct_answers - ((total_answers - total_correct_answers) / 2))
             
         percentage_score = total_score * 100 / quiz_total_correct_choices
         

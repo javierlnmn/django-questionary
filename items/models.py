@@ -96,3 +96,4 @@ class Answer(models.Model):
     
     class Meta:
         ordering = ('item__order',)
+        unique_together = ('quiz_entry', 'item',)

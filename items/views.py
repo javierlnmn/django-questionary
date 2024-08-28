@@ -37,7 +37,7 @@ class QuizView(LoginRequiredMixin, View):
         item_id = request.POST.get('item_id')
         item = get_object_or_404(Item, id=item_id)
         
-        quiz_entry, created = QuizEntry.objects.get_or_create(
+        quiz_entry, _ = QuizEntry.objects.get_or_create(
             quiz=quiz, 
             respondent=request.user
         )

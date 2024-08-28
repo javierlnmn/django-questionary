@@ -12,6 +12,7 @@ class QuizAdmin(admin.ModelAdmin):
     search_fields = ('name', 'code')
     inlines = [ItemInline]
     list_filter = ('name',)
+    prepopulated_fields = {"slug": ("name",)}
 
 @admin.register(ItemType)
 class ItemTypeAdmin(admin.ModelAdmin):

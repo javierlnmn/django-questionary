@@ -12,15 +12,15 @@ class QuizListView(LoginRequiredMixin, ListView):
     
 class QuizView(LoginRequiredMixin, View):
     
-    def get(self, request, quiz_id):
-        quiz = get_object_or_404(Quiz, id=quiz_id)
+    def get(self, request, quiz_slug):
+        quiz = get_object_or_404(Quiz, slug=quiz_slug)
         items = quiz.items.all()
         
         answered_items = Answer.objects.filter(quiz_entry__quiz=quiz, quiz_entry__respondent=request.user).values_list('item_id', flat=True)
         next_item = items.exclude(id__in=answered_items).first()
 
         if not next_item:
-            return redirect('items:quiz_completion', quiz_id=quiz.id)
+            return redirect('items:quiz_completion', quiz_slug=quiz.slug)
         
         current_question_number = answered_items.count() + 1
         
@@ -32,8 +32,8 @@ class QuizView(LoginRequiredMixin, View):
         }
         return render(request, 'items/quiz_question.html', context)
     
-    def post(self, request, quiz_id):
-        quiz = get_object_or_404(Quiz, id=quiz_id)
+    def post(self, request, quiz_slug):
+        quiz = get_object_or_404(Quiz, slug=quiz_slug)
         item_id = request.POST.get('item_id')
         item = get_object_or_404(Item, id=item_id)
         
@@ -46,7 +46,7 @@ class QuizView(LoginRequiredMixin, View):
         valid_choice_ids = item.choices.values_list('id', flat=True)
         
         if not choice_ids or not all(choice_id in valid_choice_ids for choice_id in map(int, choice_ids)):
-            return redirect('items:quiz_view', quiz_id=quiz.id)
+            return redirect('items:quiz_view', quiz_slug=quiz.slug)
         
         answer, _ = Answer.objects.get_or_create(
             quiz_entry=quiz_entry,
@@ -55,7 +55,7 @@ class QuizView(LoginRequiredMixin, View):
         
         answer.choice_answer.set(choice_ids)
         
-        return redirect('items:quiz_view', quiz_id=quiz.id)
+        return redirect('items:quiz_view', quiz_slug=quiz.slug)
     
 
 class QuizCompletionView(LoginRequiredMixin, TemplateView):
@@ -64,21 +64,21 @@ class QuizCompletionView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         
-        quiz_id = self.kwargs.get('quiz_id')
-        quiz_entry = get_object_or_404(QuizEntry, quiz__id=quiz_id, respondent=self.request.user)
+        quiz_slug = self.kwargs.get('quiz_slug')
+        quiz_entry = get_object_or_404(QuizEntry, quiz__slug=quiz_slug, respondent=self.request.user)
         
         context['quiz_entry'] = quiz_entry
         return context
     
     def get(self, request, *args, **kwargs):
-        quiz_id = self.kwargs.get('quiz_id')
-        quiz = get_object_or_404(Quiz, id=quiz_id)
+        quiz_slug = self.kwargs.get('quiz_slug')
+        quiz = get_object_or_404(Quiz, slug=quiz_slug)
         quiz_entry, created = QuizEntry.objects.get_or_create(
             quiz=quiz, 
             respondent=request.user
         )
 
         if created or not quiz_entry.is_completed:
-            return redirect('items:quiz_view', quiz_id=quiz.id)
+            return redirect('items:quiz_view', quiz_slug=quiz.slug)
 
         return super().get(request, *args, **kwargs)

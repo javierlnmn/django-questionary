@@ -1,6 +1,6 @@
 from django.db import models
 from users.models import CustomUser
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MaxValueValidator
 
 class Quiz(models.Model):
     name = models.CharField(max_length=255)
@@ -8,6 +8,7 @@ class Quiz(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(upload_to='quiz_images/', blank=True, null=True)
     passing_score = models.PositiveIntegerField(help_text='Passing Score (%)', validators=[MaxValueValidator(100)])
+    slug = models.SlugField(null=False, unique=True)
     
     @property
     def number_of_questions(self):

@@ -1,0 +1,463 @@
+[
+    {
+        "model": "items.choice",
+        "pk": 1,
+        "fields": {
+            "item": 1,
+            "choice_text": "Naruto Uzumaki",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 2,
+        "fields": {
+            "item": 1,
+            "choice_text": "Sasuke Uchiha",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 3,
+        "fields": {
+            "item": 2,
+            "choice_text": "Dragon Ball Z",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 4,
+        "fields": {
+            "item": 2,
+            "choice_text": "One Piece",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 5,
+        "fields": {
+            "item": 3,
+            "choice_text": "Neon Genesis Evangelion",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 6,
+        "fields": {
+            "item": 3,
+            "choice_text": "Attack on Titan",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 7,
+        "fields": {
+            "item": 4,
+            "choice_text": "Luffy",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 8,
+        "fields": {
+            "item": 4,
+            "choice_text": "Zoro",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 9,
+        "fields": {
+            "item": 5,
+            "choice_text": "Fullmetal Alchemist",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 10,
+        "fields": {
+            "item": 5,
+            "choice_text": "Attack on Titan",
+            "is_correct": true
+        }
+    },
+
+    {
+        "model": "items.choice",
+        "pk": 11,
+        "fields": {
+            "item": 6,
+            "choice_text": "Leonardo da Vinci",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 12,
+        "fields": {
+            "item": 6,
+            "choice_text": "Vincent van Gogh",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 13,
+        "fields": {
+            "item": 7,
+            "choice_text": "Berlin",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 14,
+        "fields": {
+            "item": 7,
+            "choice_text": "Paris",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 15,
+        "fields": {
+            "item": 8,
+            "choice_text": "China",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 16,
+        "fields": {
+            "item": 8,
+            "choice_text": "India",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 17,
+        "fields": {
+            "item": 9,
+            "choice_text": "Pacific Ocean",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 18,
+        "fields": {
+            "item": 9,
+            "choice_text": "Atlantic Ocean",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 19,
+        "fields": {
+            "item": 10,
+            "choice_text": "Mars",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 20,
+        "fields": {
+            "item": 10,
+            "choice_text": "Venus",
+            "is_correct": false
+        }
+    },
+
+    {
+        "model": "items.choice",
+        "pk": 21,
+        "fields": {
+            "item": 11,
+            "choice_text": "H2O",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 22,
+        "fields": {
+            "item": 11,
+            "choice_text": "O2",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 23,
+        "fields": {
+            "item": 12,
+            "choice_text": "Earth",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 24,
+        "fields": {
+            "item": 12,
+            "choice_text": "Mars",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 25,
+        "fields": {
+            "item": 13,
+            "choice_text": "Carbon Dioxide",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 26,
+        "fields": {
+            "item": 13,
+            "choice_text": "Oxygen",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 27,
+        "fields": {
+            "item": 13,
+            "choice_text": "Water",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 28,
+        "fields": {
+            "item": 14,
+            "choice_text": "Nucleus",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 29,
+        "fields": {
+            "item": 14,
+            "choice_text": "Mitochondria",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 30,
+        "fields": {
+            "item": 15,
+            "choice_text": "Brain",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 31,
+        "fields": {
+            "item": 15,
+            "choice_text": "Heart",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 32,
+        "fields": {
+            "item": 16,
+            "choice_text": "Michael Jackson",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 33,
+        "fields": {
+            "item": 16,
+            "choice_text": "Elvis Presley",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 34,
+        "fields": {
+            "item": 17,
+            "choice_text": "The Beatles",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 35,
+        "fields": {
+            "item": 17,
+            "choice_text": "The Rolling Stones",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 36,
+        "fields": {
+            "item": 18,
+            "choice_text": "We Don't Talk Anymore",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 37,
+        "fields": {
+            "item": 18,
+            "choice_text": "Someone Like You",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 38,
+        "fields": {
+            "item": 19,
+            "choice_text": "Rock",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 39,
+        "fields": {
+            "item": 19,
+            "choice_text": "Jazz",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 40,
+        "fields": {
+            "item": 20,
+            "choice_text": "Ludwig van Beethoven",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 41,
+        "fields": {
+            "item": 20,
+            "choice_text": "Wolfgang Amadeus Mozart",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 42,
+        "fields": {
+            "item": 21,
+            "choice_text": "HyperText Markup Language",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 43,
+        "fields": {
+            "item": 21,
+            "choice_text": "HyperText Multi Language",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 44,
+        "fields": {
+            "item": 22,
+            "choice_text": "JavaScript",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 45,
+        "fields": {
+            "item": 22,
+            "choice_text": "Java",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 46,
+        "fields": {
+            "item": 23,
+            "choice_text": "Python",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 47,
+        "fields": {
+            "item": 23,
+            "choice_text": "C++",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 48,
+        "fields": {
+            "item": 24,
+            "choice_text": "To iterate over a sequence",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 49,
+        "fields": {
+            "item": 24,
+            "choice_text": "To store data",
+            "is_correct": false
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 50,
+        "fields": {
+            "item": 25,
+            "choice_text": ".py",
+            "is_correct": true
+        }
+    },
+    {
+        "model": "items.choice",
+        "pk": 51,
+        "fields": {
+            "item": 25,
+            "choice_text": ".java",
+            "is_correct": false
+        }
+    }
+]

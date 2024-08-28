@@ -1,0 +1,62 @@
+[
+    {
+        "model": "items.quiz",
+        "pk": 1,
+        "fields": {
+            "name": "Anime Trivia",
+            "code": "AT1",
+            "description": "Test your knowledge about popular anime characters and series.",
+            "image": "quiz_images/anime_trivia.png",
+            "passing_score": 60,
+            "slug": "anime-trivia"
+        }
+    },
+    {
+        "model": "items.quiz",
+        "pk": 2,
+        "fields": {
+            "name": "General Culture Quiz",
+            "code": "GC1",
+            "description": "A quiz covering various topics in general culture.",
+            "image": "quiz_images/general_culture.png",
+            "passing_score": 65,
+            "slug": "general-culture-quiz"
+        }
+    },
+    {
+        "model": "items.quiz",
+        "pk": 3,
+        "fields": {
+            "name": "Science and Nature",
+            "code": "SN1",
+            "description": "Quiz about science and nature.",
+            "image": "quiz_images/science_nature.png",
+            "passing_score": 70,
+            "slug": "science-nature"
+        }
+    },
+    {
+        "model": "items.quiz",
+        "pk": 4,
+        "fields": {
+            "name": "Music Knowledge",
+            "code": "MK1",
+            "description": "Test your knowledge about various music genres, artists, and songs.",
+            "image": "quiz_images/music_knowledge.png",
+            "passing_score": 70,
+            "slug": "music-knowledge"
+        }
+    },
+    {
+        "model": "items.quiz",
+        "pk": 5,
+        "fields": {
+            "name": "Programming Fundamentals",
+            "code": "PF1",
+            "description": "Assess your knowledge about programming concepts, languages, and practices.",
+            "image": "quiz_images/programming_fundamentals.png",
+            "passing_score": 75,
+            "slug": "programming-fundamentals"
+        }
+    }
+]

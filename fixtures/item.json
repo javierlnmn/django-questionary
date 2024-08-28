@@ -1,0 +1,254 @@
+[
+    {
+        "model": "items.item",
+        "pk": 1,
+        "fields": {
+            "quiz": 1,
+            "item_type": 2,
+            "question_text": "Who is the main character of 'Naruto'?",
+            "order": 1
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 2,
+        "fields": {
+            "quiz": 1,
+            "item_type": 2,
+            "question_text": "In which anime does 'Kamehameha' appear?",
+            "order": 2
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 3,
+        "fields": {
+            "quiz": 1,
+            "item_type": 2,
+            "question_text": "Which anime features a giant robot named 'Eva'?",
+            "order": 3
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 4,
+        "fields": {
+            "quiz": 1,
+            "item_type": 2,
+            "question_text": "What is the name of the protagonist in 'One Piece'?",
+            "order": 4
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 5,
+        "fields": {
+            "quiz": 1,
+            "item_type": 2,
+            "question_text": "Which anime is set in a post-apocalyptic world with Titans?",
+            "order": 5
+        }
+    },
+
+    {
+        "model": "items.item",
+        "pk": 6,
+        "fields": {
+            "quiz": 2,
+            "item_type": 1,
+            "question_text": "Who painted the Mona Lisa?",
+            "order": 1
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 7,
+        "fields": {
+            "quiz": 2,
+            "item_type": 1,
+            "question_text": "What is the capital city of France?",
+            "order": 2
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 8,
+        "fields": {
+            "quiz": 2,
+            "item_type": 1,
+            "question_text": "In which country would you find the Great Wall?",
+            "order": 3
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 9,
+        "fields": {
+            "quiz": 2,
+            "item_type": 1,
+            "question_text": "What is the largest ocean on Earth?",
+            "order": 4
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 10,
+        "fields": {
+            "quiz": 2,
+            "item_type": 1,
+            "question_text": "Which planet is known as the Red Planet?",
+            "order": 5
+        }
+    },
+
+    {
+        "model": "items.item",
+        "pk": 11,
+        "fields": {
+            "quiz": 3,
+            "item_type": 2,
+            "question_text": "What is the chemical symbol for water?",
+            "order": 1
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 12,
+        "fields": {
+            "quiz": 3,
+            "item_type": 2,
+            "question_text": "What planet is known as the 'Blue Planet'?",
+            "order": 2
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 13,
+        "fields": {
+            "quiz": 3,
+            "item_type": 2,
+            "question_text": "What gas do plants primarily use for photosynthesis?",
+            "order": 3
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 14,
+        "fields": {
+            "quiz": 3,
+            "item_type": 2,
+            "question_text": "What is the powerhouse of the cell?",
+            "order": 4
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 15,
+        "fields": {
+            "quiz": 3,
+            "item_type": 2,
+            "question_text": "Which organ in the human body is responsible for pumping blood?",
+            "order": 5
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 21,
+        "fields": {
+            "quiz": 5,
+            "item_type": 1,
+            "question_text": "What does 'HTML' stand for?",
+            "order": 1
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 22,
+        "fields": {
+            "quiz": 5,
+            "item_type": 1,
+            "question_text": "Which programming language is known for its use in web development and starts with 'J'?",
+            "order": 2
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 23,
+        "fields": {
+            "quiz": 5,
+            "item_type": 1,
+            "question_text": "In which programming language would you use 'def' to define a function?",
+            "order": 3
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 24,
+        "fields": {
+            "quiz": 5,
+            "item_type": 1,
+            "question_text": "What is the purpose of a 'for loop' in programming?",
+            "order": 4
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 25,
+        "fields": {
+            "quiz": 5,
+            "item_type": 1,
+            "question_text": "What is the default file extension for a Python script?",
+            "order": 5
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 16,
+        "fields": {
+            "quiz": 4,
+            "item_type": 1,
+            "question_text": "Who is known as the 'King of Pop'?",
+            "order": 1
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 17,
+        "fields": {
+            "quiz": 4,
+            "item_type": 1,
+            "question_text": "Which band released the album 'Abbey Road'?",
+            "order": 2
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 18,
+        "fields": {
+            "quiz": 4,
+            "item_type": 1,
+            "question_text": "Which song is known for the lyrics 'We don't talk anymore'?",
+            "order": 3
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 19,
+        "fields": {
+            "quiz": 4,
+            "item_type": 1,
+            "question_text": "What genre of music is the band 'The Rolling Stones' known for?",
+            "order": 4
+        }
+    },
+    {
+        "model": "items.item",
+        "pk": 20,
+        "fields": {
+            "quiz": 4,
+            "item_type": 1,
+            "question_text": "Which classical composer wrote 'Symphony No. 9'?",
+            "order": 5
+        }
+    }
+]

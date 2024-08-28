@@ -7,25 +7,174 @@
     
     <div class="max-w-7xl w-11/12 mx-auto">
 
-        <h1>{{ quiz.name }}</h1>
-        <p>Question {{current_question_number}} of {{quiz.number_of_questions}}</p>
+        <div class="flex justify-between items-center">
+            <h2 class="text-3xl text-blue-950 font-bold">{{ quiz.name }}</h2>
+            <p class="text-black/50">{{current_question_number}} of {{ quiz.number_of_questions }}</p>
+        </div>
         <form method="post">
             {% csrf_token %}
             <input type="hidden" name="item_id" value="{{ current_item.id }}">
-            <p>{{ current_item.question_text }}</p>
-            <ul>
+            <p class="mt-4 text-xl">{{ current_item.question_text }}</p>
+            <p class="text-black/50">{{current_item.item_type.description}}</p>
+            <div class="flex flex-col gap-4 pt-6">
                 {% for choice in choices %}
-                    <li>
-                        <input type="checkbox" name="choices" value="{{ choice.id }}">
-                        {{ choice.choice_text }}
-                    </li>
+
+                <div id="choice-option-{{choice.id}}" class="border-2 border-transparent cursor-pointer transition-colors bg-blue-400/20 hover:bg-blue-400/70 px-3 py-5 rounded-2xl flex justify-between items-center">
+                    <p class="text-2xl text-black/80">{{choice.choice_text}}</p>
+                    {% comment %} CHANGE SAME SVG ID {% endcomment %}
+                    <svg id="checkbox" xmlns="http://www.w3.org/2000/svg" class="transition-all opacity-0" width="29" height="29" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path class="fill-blue-600" d="M18.333 2c1.96 0 3.56 1.537 3.662 3.472l.005 .195v12.666c0 1.96 -1.537 3.56 -3.472 3.662l-.195 .005h-12.666a3.667 3.667 0 0 1 -3.662 -3.472l-.005 -.195v-12.666c0 -1.96 1.537 -3.56 3.472 -3.662l.195 -.005h12.666zm-2.626 7.293a1 1 0 0 0 -1.414 0l-3.293 3.292l-1.293 -1.292l-.094 -.083a1 1 0 0 0 -1.32 1.497l2 2l.094 .083a1 1 0 0 0 1.32 -.083l4 -4l.083 -.094a1 1 0 0 0 -.083 -1.32z" stroke-width="0" />
+                    </svg>
+                    <input class="hidden" id="choice-check-{{choice.id}}" type="checkbox" name="choices" value="{{ choice.id }}">
+                </div>
+
                 {% endfor %}
-            </ul>
-            <button type="submit">Submit</button>
+            </div>
+            <div class="w-full flex justify-end">
+                <button id="submit-button" disabled class="px-4 py-2 bg-blue-600 hover:bg-blue-500 cursor-pointer text-white text-xl rounded-md mt-6 transition-all disabled:opacity-55 disabled:hover:bg-blue-600 disabled:cursor-default" type="submit">Next</button>
+            </div>
         </form>
     
     </div>
     
 </main>
+
+<script>
+    const itemType = '{{current_item.item_type.code}}';
+    const choicesList = [
+        {% for choice in choices %}
+            document.getElementById('choice-option-{{choice.id}}'),
+        {% endfor %}
+    ];
+    const submitButton = document.getElementById('submit-button');
+
+    choicesList.forEach(choice => {
+
+        const choiceId = choice.id.split('-')[2];
+        const checkbox = choice.querySelector(`input#choice-check-${choiceId}`);
+        
+        choice.addEventListener('click', function() {
+            toggleClasses(choice);
+            checkbox.checked = !checkbox.checked;
+    
+            if (itemType === 'SAN') { 
+                choicesList.forEach(externalChoice => {
+                    if (externalChoice !== choice) {
+                        resetClasses(externalChoice);
+                        const externalChoiceId = externalChoice.id.split('-')[2];
+                        const externalCheckbox = externalChoice.querySelector(`input#choice-check-${externalChoiceId}`);
+                        externalCheckbox.checked = false;
+                    }
+                });
+            }
+
+            checkFormSubmittable();
+        });
+    });
+
+    checkFormSubmittable();
+    
+    function toggleClasses(choice) {
+        choice.classList.toggle('border-transparent');
+        choice.classList.toggle('border-blue-500');
+        choice.classList.toggle('bg-blue-400/40');
+        choice.classList.toggle('bg-blue-400/20');
+    
+        const checkboxSvg = choice.querySelector('svg#checkbox');
+        if (checkboxSvg) {
+            checkboxSvg.classList.toggle('opacity-0');
+            checkboxSvg.classList.toggle('opacity-1');
+        }
+    }
+
+    function resetClasses(choice) {
+        choice.classList.add('border-transparent');
+        choice.classList.remove('border-blue-500');
+        choice.classList.add('bg-blue-400/20');
+        choice.classList.remove('bg-blue-400/40');
+    
+        const checkboxSvg = choice.querySelector('svg#checkbox');
+        if (checkboxSvg) {
+            checkboxSvg.classList.add('opacity-0');
+            checkboxSvg.classList.remove('opacity-1');
+        }
+    }
+
+    function checkFormSubmittable() {
+        const checkboxes = [
+            {% for choice in choices %}
+                document.getElementById('choice-check-{{choice.id}}'),
+            {% endfor %}
+        ];
+
+        for (let checkbox of checkboxes) {
+            if (checkbox.checked) {
+                submitButton.removeAttribute('disabled');
+                return;
+            }
+        }
+
+        submitButton.setAttribute('disabled', true);
+    }
+
+    {% comment %} 
+    const csrftoken = Cookies.get('csrftoken');
+
+    async function getAvailableTimes() {
+
+        const appointmentDate = document.getElementById('id-fecha_cita').value;
+
+        const selectedDay = { selected_day: appointmentDate };
+        const payload = JSON.stringify(selectedDay);
+
+        try {
+            const response = await fetch("{{ available_time_url }}", {
+                method: "POST",
+                headers: {
+                    "X-CSRFToken": csrftoken,
+                    'Content-Type': 'application/json',
+                },
+                body: payload,
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+    
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error(error);
+
+            return [];
+        }
+    }
+
+    async function setAvailableTimes() {
+        const selectInputAppointmentTime = document.getElementById("id-hora_cita");
+        const defaultOption = document.getElementById("default-time-option");
+        const availableTimes = await getAvailableTimes();
+        
+        try {
+            selectInputAppointmentTime.innerHTML = '';
+    
+            selectInputAppointmentTime.appendChild(defaultOption)
+            
+            for (const time of availableTimes) {
+                const option = document.createElement("option");
+
+                option.value = time.time_value;
+                option.text = time.time_label;
+                selectInputAppointmentTime.appendChild(option);
+            }
+        } catch (error) {
+            console.error("An error occurred:", error);
+        }
+    }
+
+    document.getElementById("id-fecha_cita").addEventListener("change", setAvailableTimes);
+    {% endcomment %}
+</script>
     
 {% endblock %}

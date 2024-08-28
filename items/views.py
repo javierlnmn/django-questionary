@@ -42,7 +42,11 @@ class QuizView(LoginRequiredMixin, View):
             respondent=request.user
         )
         
-        choice_ids = request.POST.getlist('choices')
+        choice_ids = request.POST.getlist('choices') 
+        valid_choice_ids = item.choices.values_list('id', flat=True)
+        
+        if not choice_ids or not all(choice_id in valid_choice_ids for choice_id in map(int, choice_ids)):
+            return redirect('items:quiz_view', quiz_id=quiz.id)
         
         answer, _ = Answer.objects.get_or_create(
             quiz_entry=quiz_entry,
@@ -72,9 +76,12 @@ class QuizCompletionView(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         quiz_id = self.kwargs.get('quiz_id')
         quiz = get_object_or_404(Quiz, id=quiz_id)
-        quiz_entry = get_object_or_404(QuizEntry, quiz=quiz, respondent=request.user)
+        quiz_entry, created = QuizEntry.objects.get_or_create(
+            quiz=quiz, 
+            respondent=request.user
+        )
 
-        if not quiz_entry.is_completed:
+        if created or not quiz_entry.is_completed:
             return redirect('items:quiz_view', quiz_id=quiz.id)
 
         return super().get(request, *args, **kwargs)

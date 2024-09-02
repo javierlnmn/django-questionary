@@ -1,0 +1,20 @@
+[
+    {
+        "model": "items.itemtype",
+        "pk": 1,
+        "fields": {
+            "name": "Simple Answer",
+            "code": "SAN",
+            "description": "Simple answer item"
+        }
+    },
+    {
+        "model": "items.itemtype",
+        "pk": 2,
+        "fields": {
+            "name": "Multiple Answer",
+            "code": "MAN",
+            "description": "Multiple answer item"
+        }
+    }
+]
